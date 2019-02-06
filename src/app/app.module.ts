@@ -11,11 +11,19 @@ import { LoginPage } from '../pages/login/login';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { IonicStorageModule } from '@ionic/storage';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { ProdutoPage } from '../pages/produto/produto';
+import { BuscaPage } from '../pages/busca/busca';
+import { VendedoresPage } from '../pages/vendedores/vendedores';
+import { DetalhesVendedorPage } from '../pages/detalhes-vendedor/detalhes-vendedor';
 
 @NgModule({
   declarations: [
     MyApp,
-    LoginPage
+    LoginPage,
+    ProdutoPage,
+    BuscaPage,
+    VendedoresPage,
+    DetalhesVendedorPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +34,11 @@ import { AngularFireDatabase } from '@angular/fire/database';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    LoginPage
+    LoginPage,
+    ProdutoPage,
+    BuscaPage,
+    VendedoresPage,
+    DetalhesVendedorPage
   ],
   providers: [
     StatusBar,

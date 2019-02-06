@@ -15,7 +15,6 @@ export class Caduser2Page {
 
   registerForm : FormGroup;
   uid : string;
-  x = this.navParams.get('id');
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -28,16 +27,26 @@ export class Caduser2Page {
     this.registerForm = this.formbuilder.group({
       nomePessoa : [null, [Validators.required , Validators.minLength(3)]],
       sobrenome : [null, [Validators.required , Validators.minLength(3)]],
-      cpf : [null, [Validators.required , Validators.minLength(3)]]
+      cpf : [null, [Validators.required , Validators.minLength(3)]],
+      uidUsuario : [null]
     })
   }
 
   ionViewDidLoad() {
-    console.log(this.x);
+    this.storage.get('user')
+    .then((resolve) => {
+      if(resolve.length > 0){
+        this.uid = resolve;
+      }
+      else{
+        console.log("essa porra é lenta pacarai")
+      }
+    })
   }
 
   enviarConta(){
-    this.db.database.ref('/Cliente').child(this.x).push(this.registerForm.value)
+    this.registerForm.patchValue({uidUsuario : this.uid})
+    this.db.database.ref('/Cliente').push(this.registerForm.value)
     .then(() => {
       console.log('Salvou');
       this.navCtrl.setRoot('HomePage');

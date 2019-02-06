@@ -28,6 +28,8 @@ export class Caduser1Page {
   })
 }
 
+
+
 enviarConta(){
               this.afAufh.auth.createUserWithEmailAndPassword(
               this.registerForm.value.email, 

@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>busca</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<div padding>
+
+</div>
+
+<ion-content padding>
+    <ion-card *ngFor = "let item of finalList" margin >
+        <ion-card-title>
+          {{item.nomeProduto}}
+        </ion-card-title>
+        <ion-card-content>
+          Preço : {{item.preco}} | Disponível : {{item.disponivel}}
+          <button ion-button outline item-end icon-end (click) = "openProduto(item)">
+            <ion-icon name="archive" ></ion-icon>
+            Comprar
+          </button>
+        </ion-card-content>
+      </ion-card>
+</ion-content>
