@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFireAuth} from '@angular/fire/auth';
 import { AlertController } from 'ionic-angular';
 
+
 @IonicPage({
   name : 'caduser1'
 })
@@ -25,6 +26,7 @@ export class Caduser1Page {
   this.registerForm = this.formbuilder.group({
     email: [null, [Validators.required, Validators.minLength(7)]],
     senha: [null, [Validators.required, Validators.minLength(6)]],
+    confirmSenha: [null, [Validators.required, Validators.minLength(6)]],
   })
 }
 
@@ -43,6 +45,15 @@ enviarConta(){
       this.presentAlert('Erro', 'E-mail já cadastrado.');
     }
   });
+}
+
+aprova(){
+  if(this.registerForm.value.senha == this.registerForm.value.confirmSenha){
+    return false;
+  }
+  else{
+    return true;
+  }
 }
 
 presentAlert (title: string, subtitle: string){
